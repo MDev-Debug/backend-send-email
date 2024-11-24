@@ -1,0 +1,52 @@
+{
+  "profiles": {
+    "Gateway.API.DEV": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "DEV",
+        "Audience": "*",
+        "Issuer": "*",
+        "HMAC_ENABLED": "0", // 1(on) - 0(off)
+        "MongoConnection": "mongodb+srv://gatewaydb:PUul1WxH3Vi1de6D@gatewaydb.b68c2oo.mongodb.net/",
+        "SECRET_API_KEY": "70e69826-19c3-43a6-b467-3939b8b97ece",
+        "SECRET_KEY": "8819c4d6-d72c-4595-a2b4-cd9bae100d0e"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5000"
+    },
+    "Gateway.API.HML": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "HML",
+        "Audience": "*",
+        "Issuer": "*",
+        "HMAC_ENABLED": "0", // 1(on) - 0(off)
+        "MongoConnection": "mongodb+srv://gatewaydb:PUul1WxH3Vi1de6D@gatewaydb.b68c2oo.mongodb.net/",
+        "SECRET_API_KEY": "70e69826-19c3-43a6-b467-3939b8b97ece",
+        "SECRET_KEY": "8819c4d6-d72c-4595-a2b4-cd9bae100d0e"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:5010"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_HTTP_PORTS": "8080",
+        "Audience": "*",
+        "Issuer": "*",
+        "HMAC_ENABLED": "0", // 1(on) - 0(off)
+        "MongoConnection": "mongodb+srv://gatewaydb:PUul1WxH3Vi1de6D@gatewaydb.b68c2oo.mongodb.net/",
+        "SECRET_API_KEY": "70e69826-19c3-43a6-b467-3939b8b97ece",
+        "SECRET_KEY": "8819c4d6-d72c-4595-a2b4-cd9bae100d0e"
+      },
+      "publishAllPorts": true
+    }
+  },
+  "$schema": "http://json.schemastore.org/launchsettings.json"
+}
