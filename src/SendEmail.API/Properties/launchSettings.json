@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "Gateway.API.DEV": {
+    "SendEmail.API.DEV": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
@@ -16,7 +16,7 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5000"
     },
-    "Gateway.API.HML": {
+    "SendEmail.API.HML": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

@@ -31,8 +31,6 @@ public static class DependencyInjection
         builder.AddAuthenticationJwtExtension();
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         builder.Services.AddFluentValidationAutoValidation();
-        //builder.Services.AddFluentValidationClientsideAdapters();
-        //builder.Services.AddValidatorsFromAssembly(typeof(AccountRequestValidator).Assembly);
 
 
         //Services
