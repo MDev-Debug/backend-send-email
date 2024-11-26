@@ -25,12 +25,12 @@ jobs:
 
     # Restaurar pacotes NuGet
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src
 
     # Build do projeto
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build src --configuration Release --no-restore
 
     # Executar testes
     - name: Run Tests
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test src --no-build --verbosity normal
