@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SendEmail.API\SendEmail.API.csproj" />
     <ProjectReference Include="..\SendEmail.Domain\SendEmail.Domain.csproj" />
   </ItemGroup>
 
