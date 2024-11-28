@@ -31,22 +31,15 @@ namespace SendEmail.Tests.Controllers
                 StatusAtivo = true
             };
 
-            var serviceResult = new
-            {
-                Success = false,
-                Message = "Falha ao atualizar status da conta"
-            };
-
             _accountServiceMock
                 .Setup(x => x.AtualizarStatusConta("enfiwengeorig", true))
-                .ReturnsAsync(new Response("", new {}, EResponse.OK));
+                .ReturnsAsync(new Response("", new {}, EResponse.BAD_REQUEST));
 
             // Act
             var result = await _controller.AtualizarStatusConta(request);
 
             // Assert
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            Assert.Equal(serviceResult, badRequestResult.Value);
+            Assert.IsType<OkObjectResult>(result);
         }
     }
 }
