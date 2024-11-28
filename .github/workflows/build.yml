@@ -49,3 +49,4 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"github-actions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="coverage.cobertura.xml"
           dotnet build src
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+ 
