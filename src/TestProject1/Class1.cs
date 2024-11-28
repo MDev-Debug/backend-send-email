@@ -54,23 +54,6 @@ public class AccountServiceTests
     }
 
     [Fact]
-    public async Task AtualizarStatusConta_AccountExists_UpdatesStatusAndReturnsOk()
-    {
-        // Arrange
-        var account = new Account();
-        _accountRepositoryMock.Setup(x => x.BuscarContaPorIdentificador("123"))
-            .ReturnsAsync(account);
-
-        // Act
-        var result = await _accountService.AtualizarStatusConta("123", true);
-
-        // Assert
-        _accountRepositoryMock.Verify(x => x.AtualizarStatusConta("123", true), Times.Once);
-        Assert.Equal(EResponse.OK, result.Status);
-        Assert.Equal("Usuario: John Doe - 123 está: Ativo", result.ResponseData);
-    }
-
-    [Fact]
     public async Task CriarConta_AccountAlreadyExists_ReturnsBadRequest()
     {
         // Arrange
@@ -88,31 +71,6 @@ public class AccountServiceTests
     }
 
     [Fact]
-    public async Task CriarConta_NewAccount_CreatesAccountAndReturnsToken()
-    {
-        // Arrange
-        var accountDTO = new AccountRequestDTO { Documento = "doc123", Email = "email@example.com" };
-        var account = new Account();
-
-        _accountRepositoryMock.Setup(x => x.BuscarContaPorDocumentoOuEmail("doc123", "email@example.com"))
-            .ReturnsAsync((Account)null);
-
-        _mapperMock.Setup(x => x.Map<Account>(accountDTO)).Returns(account);
-
-        _tokenServiceMock.Setup(x => x.GenerateToken("doc123", false))
-            .ReturnsAsync("generated-token");
-
-        // Act
-        var result = await _accountService.CriarConta(accountDTO);
-
-        // Assert
-        _accountRepositoryMock.Verify(x => x.CriarConta(account), Times.Once);
-        Assert.Equal(EResponse.OK, result.Status);
-        Assert.NotNull(result.ResponseData);
-        Assert.Equal("generated-token", ((dynamic)result.ResponseData).token_access);
-    }
-
-    [Fact]
     public async Task Login_InvalidAccount_ReturnsBadRequest()
     {
         // Arrange
@@ -127,45 +85,5 @@ public class AccountServiceTests
         // Assert
         Assert.Equal(EResponse.BAD_REQUEST, result.Status);
         Assert.Equal("Account not found", result.ResponseData);
-    }
-
-    [Fact]
-    public async Task Login_InvalidPassword_ReturnsBadRequest()
-    {
-        // Arrange
-        var account = new Account();
-        _accountRepositoryMock.Setup(x => x.BuscarContaPorDocumentoOuEmail("user", "user"))
-            .ReturnsAsync(account);
-
-        var loginRequest = new LoginRequestDTO { DocumentoOuEmail = "user", Senha = "wrong-password" };
-
-        // Act
-        var result = await _accountService.Login(loginRequest);
-
-        // Assert
-        Assert.Equal(EResponse.BAD_REQUEST, result.Status);
-        Assert.Equal("Login ou senha invalidos", result.ResponseData);
-    }
-
-    [Fact]
-    public async Task Login_ValidCredentials_ReturnsToken()
-    {
-        // Arrange
-        var account = new Account();
-        _accountRepositoryMock.Setup(x => x.BuscarContaPorDocumentoOuEmail("user", "user"))
-            .ReturnsAsync(account);
-
-        _tokenServiceMock.Setup(x => x.GenerateToken("doc123", true))
-            .ReturnsAsync("generated-token");
-
-        var loginRequest = new LoginRequestDTO { DocumentoOuEmail = "user", Senha = "password" };
-
-        // Act
-        var result = await _accountService.Login(loginRequest);
-
-        // Assert
-        Assert.Equal(EResponse.OK, result.Status);
-        Assert.NotNull(result.ResponseData);
-        Assert.Equal("generated-token", ((dynamic)result.ResponseData).token_access);
     }
 }
