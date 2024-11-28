@@ -36,17 +36,20 @@ jobs:
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
+          dotnet tool install --global dotnet-sonarscanner
+          dotnet tool install --global coverlet.console
+          export PATH=\"$PATH:$HOME/.dotnet/tools\"
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+          dotnet test --verbosity minimal --collect:\"XPlat Code Coverage\"
       - name: Test with coverage
         shell: powershell
         run: |
           dotnet test src --collect:"XPlat Code Coverage"
-          Move-Item "src/**/TestResults/**/*.cobertura.xml" "coverage.cobertura.xml"
       - name: Build and analyze
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"github-actions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="coverage.cobertura.xml"
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"github-actions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="src/**/TestResults/**/*.cobertura.xml"
           dotnet build src
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
  
