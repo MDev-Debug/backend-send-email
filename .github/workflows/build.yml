@@ -37,8 +37,11 @@ jobs:
         run: |
           dotnet tool install --global dotnet-sonarscanner
           dotnet tool install --global coverlet.console
-          dotnet test --verbosity minimal --collect:\"XPlat Code Coverage\"
-          dotnet sonarscanner begin /k:"github-actions" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.tests=\"./src\TestProject1/**/*.*\" /d:sonar.coverage.exclusions=\"./src\TestProject1/**\" /d:sonar.cs.opencover.reportsPaths="./src\TestProject1/**/TestResults/**/*.cobertura.xml"
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+          dotnet sonarscanner begin /k:"github-actions" \
+          /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+          /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+          /d:sonar.cs.opencover.reportsPaths="TestResults/coverage.opencover.xml"
           dotnet build src
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
  
