@@ -13,13 +13,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-
-      - name: Set up Java (se necessário)
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'zulu'
-          version: '11'
-
       - name: Run ZAP Scan
         run: |
           # Baixar e rodar o ZAP no Windows
