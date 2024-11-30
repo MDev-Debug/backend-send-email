@@ -19,6 +19,19 @@ jobs:
         with:
           java-version: 17
           distribution: 'zulu'
+      - name: Cache SonarQube packages
+        uses: actions/cache@v4
+        with:
+          path: ~\.sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
+      - name: Cache SonarQube scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v4
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
       - name: Install SonarQube scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
@@ -30,7 +43,7 @@ jobs:
         run: |
           dotnet-sonarscanner begin /k:"sonar.net" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths=coverage.xml
           dotnet build src --no-incremental
-          coverlet .\TesteSendEmail\bin\Debug\net8.0\TesteSendEmail.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
+          coverlet .\src\TesteSendEmail\bin\Debug\net8.0\TesteSendEmail.dll --target "dotnet" --targetargs "test --no-build" -f=opencover -o="coverage.xml"
           dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
  
