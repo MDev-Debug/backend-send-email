@@ -7,7 +7,7 @@ using SendEmail.Domain.Interfaces.Services;
 using SendEmail.Domain.Model;
 using SendEmail.Domain.Services;
 
-namespace TestProject1;
+namespace SendEmailTestes;
 public class AccountServiceTests
 {
     private readonly Mock<IAccountRepository> _accountRepositoryMock;

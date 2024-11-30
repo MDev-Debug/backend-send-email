@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SendEmail.API\SendEmail.API.csproj" />
+    <ProjectReference Include="..\SendEmail.CrossCutting\SendEmail.CrossCutting.csproj" />
     <ProjectReference Include="..\SendEmail.Domain\SendEmail.Domain.csproj" />
+    <ProjectReference Include="..\SendEmail.Infra.Data\SendEmail.Infra.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

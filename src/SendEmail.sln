@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendEmail.Domain", "SendEma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SendEmail.Infra.Data", "SendEmail.Infra.Data\SendEmail.Infra.Data.csproj", "{065942C7-01FA-4545-9C82-7F69A880F73B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8D86C7A3-3BCE-4627-B407-B282BD117A05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteSendEmail", "TesteSendEmail\TesteSendEmail.csproj", "{CE2EA7C7-F1E3-4794-87C5-FB891B594A82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{065942C7-01FA-4545-9C82-7F69A880F73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{065942C7-01FA-4545-9C82-7F69A880F73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{065942C7-01FA-4545-9C82-7F69A880F73B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D86C7A3-3BCE-4627-B407-B282BD117A05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D86C7A3-3BCE-4627-B407-B282BD117A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D86C7A3-3BCE-4627-B407-B282BD117A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D86C7A3-3BCE-4627-B407-B282BD117A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE2EA7C7-F1E3-4794-87C5-FB891B594A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE2EA7C7-F1E3-4794-87C5-FB891B594A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE2EA7C7-F1E3-4794-87C5-FB891B594A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE2EA7C7-F1E3-4794-87C5-FB891B594A82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

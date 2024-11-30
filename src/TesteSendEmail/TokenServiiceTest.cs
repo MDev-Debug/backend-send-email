@@ -1,11 +1,9 @@
-﻿using System;
+﻿using SendEmail.Domain.Services;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
-using SendEmail.Domain.Services;
-using Xunit;
 
+namespace SendEmailTestes;
 public class TokenServiceTests
 {
     [Fact]
