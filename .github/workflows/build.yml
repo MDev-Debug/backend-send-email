@@ -37,6 +37,7 @@ jobs:
         shell: powershell
         run: |
           dotnet tool install --global coverlet.console
+          dotnet tool install --global dotnet-sonarscanner
       - name: Build and analyze
         shell: powershell
         run: |
