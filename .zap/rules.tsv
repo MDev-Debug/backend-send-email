@@ -1,0 +1,13 @@
+# Rule ID    | Rule Name                   | Rule Description                                            | Enabled | Severity | Attack Type      | Params / Additional Info
+1           | Cross-Site Scripting (XSS)   | Detects Cross-Site Scripting vulnerabilities in responses    | true    | High     | Injection         | - 
+2           | SQL Injection                | Detects SQL Injection vulnerabilities in user inputs        | true    | High     | Injection         | - 
+3           | Cross-Site Request Forgery (CSRF) | Checks for CSRF vulnerabilities on API endpoints      | true    | Medium   | Authentication    | - 
+4           | Insecure Direct Object References (IDOR) | Detects IDOR vulnerabilities in API endpoints   | true    | High     | Authorization     | - 
+5           | Sensitive Data Exposure     | Detects the exposure of sensitive data (e.g., passwords, tokens) | true    | High     | Data Exposure     | - 
+6           | Missing HTTP Security Headers | Checks for missing security headers such as X-Content-Type-Options, X-Frame-Options, etc. | true    | Medium   | Configuration     | - 
+7           | Server Misconfiguration     | Identifies misconfigurations on the server (e.g., default pages, error messages) | true    | Medium   | Configuration     | - 
+8           | Path Traversal               | Detects path traversal vulnerabilities in URL parameters     | true    | High     | Injection         | - 
+9           | XML External Entity (XXE)    | Checks for XML External Entity injection vulnerabilities     | true    | High     | Injection         | - 
+10          | Remote Code Execution (RCE)  | Detects RCE vulnerabilities via unsafe API interactions       | true    | Critical | Code Execution    | - 
+11          | HTTP Response Splitting      | Checks for response splitting vulnerabilities in headers or body | true    | Medium   | Injection         | - 
+12          | Clickjacking                 | Detects the risk of clickjacking in API interfaces using improper headers | true    | Low      | Client-Side       | - 
